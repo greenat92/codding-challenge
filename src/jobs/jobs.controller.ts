@@ -1,5 +1,6 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { JobSearchQueryDto } from './dto/job-search-query-dto';
 import { JobsKeyWordsQueryDto } from './dto/jobs-keywords-query.dto';
 import { JobsService } from './jobs.service';
 
@@ -10,8 +11,8 @@ export class JobsController {
 
   // todo add search query dto for jobs search api
   @Get('search')
-  search() {
-    return this.jobsService.search();
+  search(@Query() jobSearchQueryDto: JobSearchQueryDto) {
+    return this.jobsService.search(jobSearchQueryDto);
   }
 
   @Get('autocomplete')

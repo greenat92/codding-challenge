@@ -1,11 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsNumber,
-  IsString,
-  Max,
-  Min,
-  MinLength,
-} from 'class-validator';
+import { IsNumber, IsString, Max, Min, MinLength } from 'class-validator';
 
 export class JobsKeyWordsQueryDto {
   @ApiProperty({ description: 'limit is string' })

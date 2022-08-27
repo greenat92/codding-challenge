@@ -1,12 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-import { jobsKeyWordsApiUrl } from './api';
+import { jobsKeyWordsApiUrl, jobsSearchResutlApiUrl } from './api';
+import { JobSearchQueryDto } from './dto/job-search-query-dto';
 import { JobsKeyWordsQueryDto } from './dto/jobs-keywords-query.dto';
 
 @Injectable()
 export class JobsService {
-  async search() {
-    return `This action returns all jobs`;
+  async search(jobSearchQueryDto: JobSearchQueryDto) {
+    const queryUrl = jobsSearchResutlApiUrl(jobSearchQueryDto);
+    try {
+      const reponse = await axios.get(queryUrl);
+      return reponse.data;
+    } catch (err) {
+      return err;
+    }
   }
 
   async jobsKeyWordsAutoComplete(jobsKeyWordsQueryDto: JobsKeyWordsQueryDto) {
