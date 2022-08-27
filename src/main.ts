@@ -15,6 +15,7 @@ async function bootstrap() {
     opts.logger = false;
   }
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api/v1/public');
 
   // to protect the app from some well-known web vulnerabilities by setting HTTP headers appropriately
   app.use(helmet());

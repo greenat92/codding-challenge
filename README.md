@@ -20,7 +20,7 @@ I would like to say thank you so much for letting me to take this challenge. I H
 - for the api that responsable for getting  jobs  details is it not implemented but here i would like to show you how i thought about it's implemtation, we hit this api `GET api/jobs/:id?language=en` to chose from which page or link you want to fetch data using `web scrapping` after i scrappe the page that retourned for job details i extract the data from there and send it back via http response with json format to the clinet.
 
 ## Some Ideas we can add to imporve and secure rest api 
-- Caching is one of the most popular techniques to make http request that have big size payload here's we can use such techniques to reduce the time of fetching data from the server. There's a lot of ways to cache rest api responses like using redis cache. or using cache-manager nodejs lib. I just mentioned it to show you that  i got your point in the challenge requirements.
+- Caching is one of the most popular techniques to make http request that have big size payload here's we can use such techniques to reduce the time of fetching data from the server. in our case we can use it with places api, There's a lot of ways to cache rest api responses like using redis cache. or using cache-manager nodejs lib. I just mentioned it to show you that  i got your point in the challenge requirements.
 
 - Rate-limiting is one of the common technics to protect applications from brute-force attacks.
 
@@ -81,7 +81,6 @@ Unfortunalty i wasn't able to deploy this app in my Heroku account because i fou
 ## Some other Ideas to increase performance of nodejs based server 
 1. Run in Parallel.
 2. Go Asynchronous.
-3. Use Caching.
 4. Use gzip Compression.
 5. Use Client Side Rendering When Possible.
 6. Don't Store Too Much in Sessions.
