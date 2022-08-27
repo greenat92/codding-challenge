@@ -21,7 +21,6 @@ export class GisPlacesService {
       });
       return reponse.data;
     } catch (err) {
-      console.log(err);
       return err;
     }
   }
