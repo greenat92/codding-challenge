@@ -2,18 +2,13 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   ArrayMinSize,
   IsArray,
-  IsNumber,
   IsString,
-  Max,
-  Min,
   MinLength,
 } from 'class-validator';
 
 export class PlacesQueryDto {
-  @ApiProperty({ description: 'row is number' })
+  @ApiProperty({ description: 'row is string' })
   @IsString()
-  //   @Max(5)
-  //   @Min(5)
   rows: string;
 
   @ApiProperty({
@@ -24,7 +19,7 @@ export class PlacesQueryDto {
   subTypes: string[];
 
   @ApiProperty({ description: 'term is string ... like zurich.. zur... ' })
-  @MinLength(3)
+  @MinLength(1)
   @IsString()
   term: string;
 }
