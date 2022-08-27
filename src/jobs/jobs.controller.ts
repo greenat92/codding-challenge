@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { JobSearchQueryDto } from './dto/job-search-query-dto';
+import { JobDetailsQueryDto } from './dto/job-details-query.dto';
+import { JobSearchQueryDto } from './dto/job-search-query.dto';
 import { JobsKeyWordsQueryDto } from './dto/jobs-keywords-query.dto';
 import { JobsService } from './jobs.service';
 
@@ -23,7 +24,10 @@ export class JobsController {
   }
 
   @Get(':id')
-  getJobDetails(@Param('id') id: string) {
-    return this.jobsService.jobDetails(id);
+  getJobDetails(
+    @Param('id') id: string,
+    @Query() jobDetailsQueryDto: JobDetailsQueryDto,
+  ) {
+    return this.jobsService.jobDetails(id, jobDetailsQueryDto);
   }
 }

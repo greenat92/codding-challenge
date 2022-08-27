@@ -1,4 +1,4 @@
-import { JobSearchQueryDto } from './dto/job-search-query-dto';
+import { JobSearchQueryDto } from './dto/job-search-query.dto';
 import { JobsKeyWordsQueryDto } from './dto/jobs-keywords-query.dto';
 
 const JOBS_CH_BASE_URL = 'https://www.jobs.ch/api/v1/public';
