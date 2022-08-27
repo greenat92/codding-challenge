@@ -1,0 +1,1 @@
+// todo: impelemt here scrapper for job details data

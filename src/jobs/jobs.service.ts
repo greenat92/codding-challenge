@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
+import { LanguageEnum } from '../common/enmus';
 import { jobsKeyWordsApiUrl, jobsSearchResutlApiUrl } from './api';
-import { JobSearchQueryDto } from './dto/job-search-query-dto';
+import { JobDetailsQueryDto } from './dto/job-details-query.dto';
+import { JobSearchQueryDto } from './dto/job-search-query.dto';
 import { JobsKeyWordsQueryDto } from './dto/jobs-keywords-query.dto';
 
 @Injectable()
@@ -26,7 +28,35 @@ export class JobsService {
     }
   }
 
-  async jobDetails(id: string) {
-    return `This action returns job details ${id}`;
+  async jobDetails(id: string, jobDetailsQueryDto: JobDetailsQueryDto) {
+    let jobDetails =  {
+      title: '',
+      location: '',
+      publishDate: '',
+      workload: '',
+      languages: [],
+      contractType: '',
+      jobDetails: ''
+    };
+    let url = `https://www.jobs.ch/en/vacancies/detail/${id}/`
+    if (jobDetailsQueryDto.language === LanguageEnum.ENGLISH) {
+      url = `https://www.jobs.ch/${jobDetailsQueryDto.language}/vacancies/detail/${id}/`;
+      // todo: call screpper service to get the details from the html page
+      return jobDetails;
+    } else if (jobDetailsQueryDto.language === LanguageEnum.GERMAN) {
+      url = `https://www.jobs.ch/${jobDetailsQueryDto.language}/stellenangebote/detail/${id}/`;
+      // todo: call screpper service to get the details from the html page
+      return jobDetails;
+    } else if (jobDetailsQueryDto.language === LanguageEnum.FRENCH) {
+      url = `https://www.jobs.ch/${jobDetailsQueryDto.language}/offres-emplois/detail/${id}/`;
+      // todo: call screpper service to get the details from the html page
+      return jobDetails;
+    } else if (jobDetailsQueryDto.language === LanguageEnum.ITALIAN) {
+      url =  `https://www.jobs.ch/${jobDetailsQueryDto.language}/posti-vacanti/detail/${id}/`;
+      // todo: call screpper service to get the details from the html page
+      return jobDetails;
+    }
+    // todo: call screpper service to get the details from the html page
+    return jobDetails;
   }
 }
