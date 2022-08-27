@@ -5,10 +5,10 @@ import { SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { createDocument } from './swagger/swagger';
 import { ConfigService } from './config/config.service';
+import { Logger } from './logger/logger';
 import { NestApplicationOptions, ValidationPipe } from '@nestjs/common';
 
-
-const NEST_LOGGING = false;
+const NEST_LOGGING = true;
 async function bootstrap() {
   const opts: NestApplicationOptions = {};
   if (!NEST_LOGGING) {
@@ -16,18 +16,19 @@ async function bootstrap() {
   }
   const app = await NestFactory.create(AppModule);
 
-   // to protect the app from some well-known web vulnerabilities by setting HTTP headers appropriately
-   app.use(helmet());
+  // to protect the app from some well-known web vulnerabilities by setting HTTP headers appropriately
+  app.use(helmet());
 
-   // Cross-origin resource sharing (CORS) is a mechanism that allows resources to be requested from another domain
-   app.enableCors();
+  // Cross-origin resource sharing (CORS) is a mechanism that allows resources to be requested from another domain
+  app.enableCors();
 
-   // csurf config 
-   // TODO: Solve csurf issue 
+  // csurf config
+  // TODO: Solve csurf issue
   // app.use(csurf());
 
+  app.useLogger(app.get(Logger));
   const configService = app.get(ConfigService);
- 
+
   // validation pipeline
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   // swagger config

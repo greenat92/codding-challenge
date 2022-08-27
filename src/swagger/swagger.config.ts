@@ -5,8 +5,7 @@ import { SwaggerConfig } from './swagger.interface';
  */
 export const SWAGGER_CONFIG: SwaggerConfig = {
   title: 'Kollab codding challenge',
-  description:
-    'A service to fetch jobs',
+  description: 'A service to fetch jobs',
   version: '1.0',
   tags: ['kollab challenge'],
 };
