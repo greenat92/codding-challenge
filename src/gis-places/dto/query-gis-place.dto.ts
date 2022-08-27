@@ -1,10 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  ArrayMinSize,
-  IsArray,
-  IsString,
-  MinLength,
-} from 'class-validator';
+import { ArrayMinSize, IsArray, IsString, MinLength } from 'class-validator';
 
 export class PlacesQueryDto {
   @ApiProperty({ description: 'row is string' })
