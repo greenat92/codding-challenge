@@ -4,6 +4,7 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { createDocument } from './swagger/swagger';
+import { ConfigService } from './config/config.service';
 import { NestApplicationOptions, ValidationPipe } from '@nestjs/common';
 
 
@@ -24,12 +25,14 @@ async function bootstrap() {
    // csurf config 
    // TODO: Solve csurf issue 
   // app.use(csurf());
+
+  const configService = app.get(ConfigService);
  
   // validation pipeline
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   // swagger config
   const document = createDocument(app);
   SwaggerModule.setup('api/docs', app, document);
-  await app.listen(3000);
+  await app.listen(configService.get().port);
 }
 bootstrap();
