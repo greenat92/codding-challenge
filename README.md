@@ -1,4 +1,4 @@
-## kollabo challenge docs
+## codding challenge docs
 
 I would like to say thank you so much for letting me to take this challenge. I Hopefully you'll like the way that i followed to get this job done. and i'm very excited and looking forward for feedback from you about this implementation to learn more from. and take your notes as concediration to develop my skils and push myself to the next level that i'm looking for.
 
@@ -65,10 +65,10 @@ $ npm run test:cov
 
 ```bash
 # build the image
-$ docker build -t kollabo-challenge-api .
+$ docker build -t coding-challenge-api .
 
 # start the container
-$ docker run -p80:3000 kollabo-challenge-api
+$ docker run -p80:3000 coding-challenge-api
 
 ```
 
